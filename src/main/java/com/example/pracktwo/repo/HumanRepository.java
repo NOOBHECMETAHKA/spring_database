@@ -6,6 +6,6 @@ import org.springframework.data.repository.ListCrudRepository;
 
 import java.util.UUID;
 
-public interface HumanRepository extends ListCrudRepository<Human, UUID> {
+public interface HumanRepository extends ListCrudRepository<Human, Long> {
 
 }

@@ -6,6 +6,6 @@ import org.springframework.data.repository.ListCrudRepository;
 
 import java.util.UUID;
 
-public interface PencilRepository extends ListCrudRepository<Pencil, UUID> {
+public interface PencilRepository extends ListCrudRepository<Pencil, Long> {
 
 }

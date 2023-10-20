@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${title}"></title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <!--    <link rel="stylesheet" href="/bootstrap/css/bootstrap.css">-->
+</head>
+<body>
+<div th:insert="blocks/header :: header"></div>
+<main class="bd-main order-1">
+    <div class="container mt-5 p-2">
+
+        <h1 class="text-center">Поиск по персональной информации</h1>
+        <form th:action="@{/humans}" th:object="${human}" method="get" class="row g-3">
+            <div class="col-md-6">
+                <label for="firstName" class="form-label">Фамилия</label>
+                <input th:field="*{firstName}" type="text" class="form-control" id="firstName" placeholder="Иванов">
+            </div>
+            <div class="col-md-6">
+                <label for="lastName" class="form-label">Имя</label>
+                <input th:field="*{lastName}" type="text" class="form-control" id="lastName" placeholder="Иван">
+            </div>
+            <div class="col-md-6">
+                <label for="dateBirth" class="form-label">Дата рождения</label>
+                <input th:field="*{dateBirth}" type="date" class="form-control" id="dateBirth">
+            </div>
+            <div class="col-md-6">
+                <label for="weight" class="form-label">Вес</label>
+                <input th:field="*{weight}" type="number" class="form-control" id="weight">
+            </div>
+            <div class="col-12">
+                <button type="submit" class="btn btn-primary">Найти!</button>
+            </div>
+        </form>
+    </div>
+    <div class="container mt-5">
+        <h1 class="text-center">Люди</h1>
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">Фамилия</th>
+                <th scope="col">Имя</th>
+                <th scope="col">Дата рождения</th>
+                <th scope="col">Вес</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="el : ${humans}">
+                <td th:text="${el.firstName}"></td>
+                <td th:text="${el.lastName}"></td>
+                <td th:text="${el.dateBirth}"></td>
+                <td th:text="${el.weight}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+</main>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+<!--<script src="/bootstrap/js/bootstrap.bundle.js"></script>-->
+<!--<script src="/bootstrap/js/bootstrap.esm.js"></script>-->
+<!--<script src="/bootstrap/js/bootstrap.js"></script>-->
+</body>
+</html>

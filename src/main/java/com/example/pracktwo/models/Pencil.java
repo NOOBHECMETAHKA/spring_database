@@ -1,17 +1,19 @@
 package com.example.pracktwo.models;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 
 import java.util.UUID;
 
 @Entity
 public class Pencil {
-
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private UUID id;
+    private long id;
+    @NotBlank
     @Column(unique = true, nullable = false)
     private String name;
+    @NotBlank
     @Column(nullable = false)
     private String color;
     @Column(name = "price")
@@ -30,18 +32,18 @@ public class Pencil {
         this.price = price;
     }
 
-    public Pencil(UUID id, String name, String color, double price) {
+    public Pencil(long id, String name, String color, double price) {
         this.id = id;
         this.name = name;
         this.color = color;
         this.price = price;
     }
 
-    public UUID getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(UUID id) {
+    public void setId(long id) {
         this.id = id;
     }
 

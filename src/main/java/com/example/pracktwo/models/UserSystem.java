@@ -2,19 +2,22 @@ package com.example.pracktwo.models;
 
 import jakarta.annotation.Generated;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 
 import java.util.UUID;
 
 @Entity
 public class UserSystem {
-
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private UUID id;
+    private long id;
+    @NotBlank
     @Column(unique = true, nullable = false)
     private String email;
+    @NotBlank
     @Column(nullable = false)
     private String name;
+    @NotBlank
     @Column(nullable = false)
     private String password;
 
@@ -26,18 +29,18 @@ public class UserSystem {
         this.password = password;
     }
 
-    public UserSystem(UUID id, String email, String name, String password) {
+    public UserSystem(long id, String email, String name, String password) {
         this.id = id;
         this.email = email;
         this.name = name;
         this.password = password;
     }
 
-    public UUID getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(UUID id) {
+    public void setId(long id) {
         this.id = id;
     }
 

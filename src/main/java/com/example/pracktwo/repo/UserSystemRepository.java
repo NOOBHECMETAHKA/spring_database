@@ -6,6 +6,6 @@ import org.springframework.data.repository.ListCrudRepository;
 
 import java.util.UUID;
 
-public interface UserSystemRepository extends ListCrudRepository<UserSystem, UUID> {
+public interface UserSystemRepository extends ListCrudRepository<UserSystem, Long> {
 
 }

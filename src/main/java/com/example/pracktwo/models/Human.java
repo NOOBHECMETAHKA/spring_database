@@ -1,6 +1,9 @@
 package com.example.pracktwo.models;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 
 import java.time.LocalDate;
 import java.util.UUID;
@@ -9,13 +12,17 @@ import java.util.UUID;
 public class Human {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private UUID id;
+    private long id;
+    @Size(min = 3, max = 64)
     @Column(nullable = false)
     private String firstName;
+    @Size(min = 3, max = 64)
     @Column(nullable = false)
     private String lastName;
+    @NotBlank
     @Column(nullable = false)
     private LocalDate dateBirth;
+
     @Column(name = "weight")
     private double weight = 50;
 
@@ -34,7 +41,7 @@ public class Human {
         this.weight = weight;
     }
 
-    public Human(UUID id, String firstName, String lastName, LocalDate dateBirth, double weight) {
+    public Human(long id, String firstName, String lastName, LocalDate dateBirth, double weight) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -42,11 +49,11 @@ public class Human {
         this.weight = weight;
     }
 
-    public UUID getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(UUID id) {
+    public void setId(long id) {
         this.id = id;
     }
 

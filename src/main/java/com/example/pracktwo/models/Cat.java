@@ -1,21 +1,28 @@
 package com.example.pracktwo.models;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
+import lombok.Getter;
 
 import java.util.UUID;
 
 @Entity
 public class Cat {
-
+    @Getter
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private UUID id;
+    private long id;
+    @Getter
+    @NotBlank
     @Column(unique = true, nullable = false)
     private String name;
+    @Min(0)
     @Column(name = "count_likes")
-    private Long like = 0L;
+    private long like = 0;
+    @Min(0)
     @Column(name = "count_views")
-    private Long view = 0L;
+    private long view = 0;
 
     public Cat() {}
 
@@ -29,23 +36,15 @@ public class Cat {
         this.view = view;
     }
 
-    public Cat(UUID id, String name, Long like, Long view) {
+    public Cat(long id, String name, long like, long view) {
         this.id = id;
         this.name = name;
         this.like = like;
         this.view = view;
     }
 
-    public UUID getId() {
-        return id;
-    }
-
-    public void setId(UUID id) {
+    public void setId(long id) {
         this.id = id;
-    }
-
-    public String getName() {
-        return name;
     }
 
     public void setName(String name) {
@@ -56,7 +55,7 @@ public class Cat {
         return like;
     }
 
-    public void setLike(Long like) {
+    public void setLike(long like) {
         this.like = like;
     }
 
